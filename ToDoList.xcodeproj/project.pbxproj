@@ -22,6 +22,7 @@
 		3D3A007A18B9C8C500123464 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D3A007918B9C8C500123464 /* main.storyboard */; };
 		3D8FC1C518BC6B2C0083217C /* sToDoAddToDoItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8FC1C418BC6B2C0083217C /* sToDoAddToDoItemViewController.m */; };
 		3D8FC1C818BC6BF90083217C /* sToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8FC1C718BC6BF90083217C /* sToDoListViewController.m */; };
+		E9FB058618C2589800679E4F /* sToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FB058518C2589800679E4F /* sToDoItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		3D8FC1C418BC6B2C0083217C /* sToDoAddToDoItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sToDoAddToDoItemViewController.m; sourceTree = "<group>"; };
 		3D8FC1C618BC6BF90083217C /* sToDoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sToDoListViewController.h; sourceTree = "<group>"; };
 		3D8FC1C718BC6BF90083217C /* sToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sToDoListViewController.m; sourceTree = "<group>"; };
+		E9FB058418C2589800679E4F /* sToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sToDoItem.h; path = ../sToDoItem.h; sourceTree = "<group>"; };
+		E9FB058518C2589800679E4F /* sToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = sToDoItem.m; path = ../sToDoItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 		3D3A005018B9C5D200123464 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				E9FB058418C2589800679E4F /* sToDoItem.h */,
+				E9FB058518C2589800679E4F /* sToDoItem.m */,
 				3D3A005918B9C5D200123464 /* sToDoAppDelegate.h */,
 				3D3A005A18B9C5D200123464 /* sToDoAppDelegate.m */,
 				3D3A007918B9C8C500123464 /* main.storyboard */,
@@ -257,6 +262,7 @@
 				3D8FC1C818BC6BF90083217C /* sToDoListViewController.m in Sources */,
 				3D8FC1C518BC6B2C0083217C /* sToDoAddToDoItemViewController.m in Sources */,
 				3D3A005B18B9C5D200123464 /* sToDoAppDelegate.m in Sources */,
+				E9FB058618C2589800679E4F /* sToDoItem.m in Sources */,
 				3D3A005718B9C5D200123464 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

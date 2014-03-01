@@ -7,8 +7,12 @@
 //
 
 #import "sToDoListViewController.h"
+#import "sToDoItem.h"
+#import "sToDoAddToDoItemViewController.h"
 
 @interface sToDoListViewController ()
+
+@property NSMutableArray *toDoItems;
 
 @end
 
@@ -16,6 +20,28 @@
 
 - (IBAction)unwindToList:(UIStoryboardSegue *) sender
 {
+    sToDoAddToDoItemViewController *source = [sender sourceViewController];
+    sToDoItem *item = source.toDoItem;
+    if (item != Nil) {
+        [self.toDoItems addObject:item];
+        [self.tableView reloadData];
+    }
+    
+    
+}
+
+-(void) loadInitialData {
+    sToDoItem *item1 = [[sToDoItem alloc] init];
+    item1.itemName = @"Buy Milk";
+    [self.toDoItems addObject:item1];
+    
+    sToDoItem *item2 = [[sToDoItem alloc] init];
+    item2.itemName = @"Buy Eggs";
+    [self.toDoItems addObject:item2];
+    
+    sToDoItem *item3 = [[sToDoItem alloc] init];
+    item3.itemName = @"Read a book";
+    [self.toDoItems addObject:item3];
     
 }
 
@@ -28,6 +54,18 @@
     return self;
 }
 
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    sToDoItem *tappedItem = [self.toDoItems objectAtIndex:indexPath.row];
+    tappedItem.completed = !tappedItem.completed;
+    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    return;
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -37,6 +75,9 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.toDoItems = [[NSMutableArray alloc] init];
+    [self loadInitialData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,29 +88,36 @@
 
 #pragma mark - Table view data source
 
-/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.toDoItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"ListPrototypeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    sToDoItem *item = [self.toDoItems objectAtIndex:indexPath.row];
+    cell.textLabel.text = item.itemName;
+    
+    
+    if (item.completed){
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
-}*/
+}
 
 /*
 // Override to support conditional editing of the table view.
